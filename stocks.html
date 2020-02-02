@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+ <html>
+   <head>
+     <!--Import Google Icon Font-->
+     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+     <!--Import materialize.css-->
+     <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+
+     <!--Let browser know website is optimized for mobile-->
+     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+   </head>
+
+   <body>
+     <div class="tradingview-widget-container">
+       <input id="searchbar" onkeyup="search_stock()" type="text" name="search" placeholder="Search stock">
+
+         <div id="tradingview_e2b28"></div>
+         <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+         <script type="text/javascript">
+         function search_stock(){
+           var input = document.getElementById("searchbar");
+           input.addEventListener("keyup", function(event) {
+             if (event.keyCode === 13) {
+               var searchInput = document.getElementById('searchbar').value;
+               console.log(searchInput);
+               new TradingView.widget(
+                 {
+                   "width": 980,
+                   "height": 610,
+                   "symbol": "NASDAQ:" + searchInput,
+                   "interval": "D",
+                   "timezone": "Etc/UTC",
+                   "theme": "Light",
+                   "style": "1",
+                   "locale": "en",
+                   "toolbar_bg": "#f1f3f6",
+                   "enable_publishing": false,
+                   "allow_symbol_change": true,
+                   "news": [
+                     "headlines"],
+                   "container_id": "tradingview_e2b28"
+                 }
+        );
+             }
+           });
+         }
+         new TradingView.widget(
+           {
+             "width": 980,
+             "height": 610,
+             "symbol": "NASDAQ:AAPL",
+             "interval": "D",
+             "timezone": "Etc/UTC",
+             "theme": "Light",
+             "style": "1",
+             "locale": "en",
+             "toolbar_bg": "#f1f3f6",
+             "enable_publishing": false,
+             "allow_symbol_change": true,
+             "container_id": "tradingview_e2b28"
+           }
+  );
+  </script>
+</div>
+<!-- TradingView Widget END -->
+   </body>
+ </html>
